@@ -1,0 +1,66 @@
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1440px,
+  xxl: 1920px,
+);
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.16em;
+  color: #4b4b4b;
+  margin-top: 50px;
+  
+  &::before,
+  &::after {
+    content: '';
+    min-width: #{map-get($breakpoints, xs)};
+    max-width: #{map-get($breakpoints, sm) - 1};
+    // display: none; // Prevent from displaying.
+  }
+
+  @media (min-width: map-get($breakpoints, sm)) {
+    &::before {
+      min-width: #{map-get($breakpoints, sm)};
+      max-width: #{map-get($breakpoints, md) - 1};
+    }
+  }
+  @media (min-width: map-get($breakpoints, md)) {
+    &::before {
+      min-width: #{map-get($breakpoints, md)};
+      max-width: #{map-get($breakpoints, lg) - 1};
+    }
+  }
+  @media (min-width: map-get($breakpoints, lg)) {
+    &::before {
+      min-width: #{map-get($breakpoints, lg)};
+      max-width: #{map-get($breakpoints, xl) - 1};
+    }
+  }
+  @media (min-width: map-get($breakpoints, xl)) {
+    &::before {
+      min-width: #{map-get($breakpoints, xl)};
+      max-width: #{map-get($breakpoints, xxl) - 1};
+    }
+  }
+  @media (min-width: map-get($breakpoints, xxl)) {
+    &::before {
+      min-width: #{map-get($breakpoints, xxl)};
+      max-width: #{map-get($breakpoints, xxl)};
+    }
+  }
+}
+
+::selection {
+  background: #ca322c;
+  color: white;
+}
+
+.breakpoint {
+  background-color: #ca322c;
+  color: white;
+  display: inline-block;
+  padding: 2px 4px;
+}
